@@ -1,3 +1,0 @@
-[submodule "environment/franka_emika_panda_pybullet"]
-	path = environment/franka_emika_panda_pybullet
-	url = https://github.com/PaulPauls/franka_emika_panda_pybullet
