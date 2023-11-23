@@ -4,7 +4,7 @@ import pybullet_data
 import numpy as np
 import imageio_ffmpeg
 
-from franka_emika_panda_pybullet.panda_robot.panda_robot import PandaRobot
+from environment.panda_robot.panda_robot import PandaRobot
 
 t = 0
 
@@ -24,10 +24,10 @@ cube_id = p.loadURDF("cube.urdf", basePosition=[0, 1.2, 0.65], globalScaling=0.0
 
 #franka2 = p.loadURDF("PandaRobot.jl/deps/Panda/panda.urdf",[0,1,0])
 franka3 = PandaRobot(include_gripper=True)
-#target position/focus is going to be the middle of the table
+#target position/ focus is going to be the middle of the table
 #this target position is going to be used for both arms
 cam_target_pos = [0, 1, 0.65]
-cam_distance = 0.9
+cam_distance = 1
 cam_yaw, cam_pitch, cam_roll = 0, -15, 0
 cam_width, cam_height = 480, 360
 

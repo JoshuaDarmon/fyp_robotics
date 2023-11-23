@@ -10,7 +10,7 @@ class PandaRobot:
         """"""
         p.setAdditionalSearchPath(os.path.dirname(__file__) + '/model_description')
         panda_model = "panda_with_gripper.urdf" if include_gripper else "panda.urdf"
-        self.robot_id = p.loadURDF(panda_model, useFixedBase=True, flags=p.URDF_USE_SELF_COLLISION)
+        self.robot_id = p.loadURDF(panda_model, useFixedBase=True, flags=p.URDF_USE_SELF_COLLISION,baseOrientation=p.getQuaternionFromEuler([0,0,0]))
 
         # Set maximum joint velocity. Maximum joint velocity taken from:
         # https://s3-eu-central-1.amazonaws.com/franka-de-uploads/uploads/Datasheet-EN.pdf
