@@ -14,9 +14,9 @@ p.setAdditionalSearchPath(pybullet_data.getDataPath())
 
 p.setGravity(0, 0, -10)
 planeId = p.loadURDF("plane.urdf")
-tableId = p.loadURDF("table/table.urdf",[0,1,0])
+tableId = p.loadURDF("table/table.urdf",[0,1,-0.3])
 #0.65 to be on top of the table
-cube_id = p.loadURDF("cube.urdf", basePosition=[0, 1.2, 0.65], globalScaling=0.05)
+cube_id = p.loadURDF("cube.urdf", basePosition=[0, 1.2, 0.35], globalScaling=0.2)
 
 
 
@@ -52,12 +52,14 @@ while t<900:
   else:
     t += 1
     p.stepSimulation()
-    if t % 8 == 0: # PyBullet default simulation time step is 240fps, but we want to record video at 30fps.
+
+    if t % 30 == 0: # PyBullet default simulation time step is 240fps, but we want to record video at 30fps.
         cam_view_matrix = p.computeViewMatrixFromYawPitchRoll(cam_target_pos, cam_distance, cam_yaw, cam_pitch, cam_roll, cam_up_axis_idx)
         cam_projection_matrix = p.computeProjectionMatrixFOV(cam_fov, cam_width*1./cam_height, cam_near_plane, cam_far_plane)
         image = p.getCameraImage(cam_width, cam_height, cam_view_matrix, cam_projection_matrix)[2]#[:, :, :3]
-        vid.send(np.ascontiguousarray(image))
-    
+        
+        p.setJointMotorControl2(franka3.robot_id,8,p.POSITION_CONTROL,0.5,force=100)
+        p.setJointMotorControl2(franka3.robot_id,9,p.POSITION_CONTROL,0.5,force=100)
     #camera()
     sleep(0.01)
 
