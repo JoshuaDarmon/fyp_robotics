@@ -32,7 +32,10 @@ class PandaRobot:
     def reset_state(self):
         """"""
         for j in range(self.dof):
-            p.resetJointState(self.robot_id, j, targetValue=0)
+            if j==3:
+                p.resetJointState(self.robot_id, j, targetValue=-1)
+            else: 
+                p.resetJointState(self.robot_id, j, targetValue=0)
         p.setJointMotorControlArray(bodyUniqueId=self.robot_id,
                                     jointIndices=self.joints,
                                     controlMode=p.VELOCITY_CONTROL,
