@@ -34,6 +34,8 @@ class PandaRobot:
         for j in range(self.dof):
             if j==3:
                 p.resetJointState(self.robot_id, j, targetValue=-1)
+            elif j==5:
+                p.resetJointState(self.robot_id, j, targetValue=1)
             else: 
                 p.resetJointState(self.robot_id, j, targetValue=0)
         p.setJointMotorControlArray(bodyUniqueId=self.robot_id,
