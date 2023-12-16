@@ -319,7 +319,7 @@
   
   
   <material name="panda_white">
-    <color rgba="0.2 0.2 0.2 1."/>
+    <color rgba="1. 1. 1. 1."/>
   </material>
   <material name="panda_gray">
     <color rgba=".4 .4 .4 1."/>
