@@ -18,9 +18,11 @@ class PandaRobot:
         p.changeDynamics(bodyUniqueId=self.robot_id, linkIndex=1, maxJointVelocity=50 * (math.pi / 180))
         p.changeDynamics(bodyUniqueId=self.robot_id, linkIndex=2, maxJointVelocity=50 * (math.pi / 180))
         p.changeDynamics(bodyUniqueId=self.robot_id, linkIndex=3, maxJointVelocity=50 * (math.pi / 180))
-        p.changeDynamics(bodyUniqueId=self.robot_id, linkIndex=4, maxJointVelocity=60 * (math.pi / 180))
-        p.changeDynamics(bodyUniqueId=self.robot_id, linkIndex=5, maxJointVelocity=60 * (math.pi / 180))
-        p.changeDynamics(bodyUniqueId=self.robot_id, linkIndex=6, maxJointVelocity=60 * (math.pi / 180))
+        p.changeDynamics(bodyUniqueId=self.robot_id, linkIndex=4, maxJointVelocity=50 * (math.pi / 180))
+        p.changeDynamics(bodyUniqueId=self.robot_id, linkIndex=5, maxJointVelocity=50 * (math.pi / 180))
+        p.changeDynamics(bodyUniqueId=self.robot_id, linkIndex=6, maxJointVelocity=50 * (math.pi / 180))
+        p.changeDynamics(bodyUniqueId=self.robot_id, linkIndex=7, maxJointVelocity=50 * (math.pi / 180))
+        p.changeDynamics(bodyUniqueId=self.robot_id, linkIndex=8, maxJointVelocity=50 * (math.pi / 180))
 
         # Set DOF according to the fact that either gripper is supplied or not and create often used joint list
         self.dof = p.getNumJoints(self.robot_id) - 1
