@@ -6,11 +6,11 @@ import pybullet as p
 class PandaRobot:
     """"""
 
-    def __init__(self, include_gripper):
+    def __init__(self, include_gripper,x,y,z):
         """"""
         p.setAdditionalSearchPath(os.path.dirname(__file__) + '/model_description')
         panda_model = "panda_with_gripper.urdf" if include_gripper else "panda.urdf"
-        self.robot_id = p.loadURDF(panda_model, useFixedBase=True, flags=p.URDF_USE_SELF_COLLISION,baseOrientation=p.getQuaternionFromEuler([0,0,0]))
+        self.robot_id = p.loadURDF(panda_model, useFixedBase=True, flags=p.URDF_USE_SELF_COLLISION,basePosition=[x,y,z],baseOrientation=p.getQuaternionFromEuler([0,0,0]))
 
         # Set maximum joint velocity. Maximum joint velocity taken from:
         # https://s3-eu-central-1.amazonaws.com/franka-de-uploads/uploads/Datasheet-EN.pdf
@@ -20,8 +20,8 @@ class PandaRobot:
         p.changeDynamics(bodyUniqueId=self.robot_id, linkIndex=3, maxJointVelocity=50 * (math.pi / 180))
         p.changeDynamics(bodyUniqueId=self.robot_id, linkIndex=4, maxJointVelocity=60 * (math.pi / 180))
         p.changeDynamics(bodyUniqueId=self.robot_id, linkIndex=5, maxJointVelocity=60 * (math.pi / 180))
-        p.changeDynamics(bodyUniqueId=self.robot_id, linkIndex=6, maxJointVelocity=60 * (math.pi / 180))
-        p.changeDynamics(bodyUniqueId=self.robot_id, linkIndex=7, maxJointVelocity=60 * (math.pi / 180))
+        # p.changeDynamics(bodyUniqueId=self.robot_id, linkIndex=6, maxJointVelocity=60 * (math.pi / 180))
+        # p.changeDynamics(bodyUniqueId=self.robot_id, linkIndex=7, maxJointVelocity=60 * (math.pi / 180))
         p.changeDynamics(bodyUniqueId=self.robot_id, linkIndex=8, maxJointVelocity=60 * (math.pi / 180))
 
         # Set DOF according to the fact that either gripper is supplied or not and create often used joint list
