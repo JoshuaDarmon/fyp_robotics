@@ -1,2 +1,4 @@
 robotics_open_x_embodiment_and_rt_x_oss_rt_1_x_tf_trained_for_002272480_step/
 sentence_encoder/
+*.jpg
+*.mp4
